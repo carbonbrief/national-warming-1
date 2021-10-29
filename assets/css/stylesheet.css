@@ -256,8 +256,13 @@ h2.mb-0{
   line-height:30px;
 }
 
-#historical-warming, #future-warming{
+/* #historical-warming, #future-warming{
   height:35px;
+} */
+
+span.baseline{
+  font-size: 11px;
+  /* float: ; */
 }
 
 span.label-title{
@@ -296,7 +301,7 @@ span.label-title{
 
 .map-chart{
   width:100%;
-  height:20vh;
+  height:35vh;
   background-color: transparent;
   border:1px solid #999999
 }

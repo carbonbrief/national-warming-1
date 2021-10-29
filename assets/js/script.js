@@ -33,10 +33,10 @@ var midCoords;
         //     'data': 'assets/data/excess.geojson',
         // });
 
-        map.addSource('subnational', {
-            'type': 'geojson',
-            'data': 'https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson'
-        });
+        // map.addSource('subnational', {
+        //     'type': 'geojson',
+        //     'data': 'https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson'
+        // });
 
         // The feature-state dependent fill-opacity expression will render the hover effect
         // when a feature's hover state is set to true.
@@ -150,38 +150,38 @@ var midCoords;
         //     }
         // });
 
-        map.addLayer({
-            'id': 'subnational-fills',
-            'type': 'fill',
-            'source': 'subnational',
-            'layout': {
-                // Make the layer visible by default.
-                'visibility': 'none'
-                },
-            'paint': {
-                'fill-color': '#c7432b',
-                'fill-opacity': [
-                    'case',
-                    ['boolean', ['feature-state', 'hover'], false],
-                    0.5,
-                    0.3
-                ]
-            }
-        });
+        // map.addLayer({
+        //     'id': 'subnational-fills',
+        //     'type': 'fill',
+        //     'source': 'subnational',
+        //     'layout': {
+        //         // Make the layer visible by default.
+        //         'visibility': 'none'
+        //         },
+        //     'paint': {
+        //         'fill-color': '#c7432b',
+        //         'fill-opacity': [
+        //             'case',
+        //             ['boolean', ['feature-state', 'hover'], false],
+        //             0.5,
+        //             0.3
+        //         ]
+        //     }
+        // });
 
-        map.addLayer({
-            'id': 'subnational-borders',
-            'type': 'line',
-            'source': 'subnational',
-            'layout': {
-                // Make the layer visible by default.
-                'visibility': 'none'
-                },
-            'paint': {
-                'line-color': '#f4f4f4',
-                'line-width': 0.3
-            }
-        });
+        // map.addLayer({
+        //     'id': 'subnational-borders',
+        //     'type': 'line',
+        //     'source': 'subnational',
+        //     'layout': {
+        //         // Make the layer visible by default.
+        //         'visibility': 'none'
+        //         },
+        //     'paint': {
+        //         'line-color': '#f4f4f4',
+        //         'line-width': 0.3
+        //     }
+        // });
         
         // function countryDropdown (){
 
@@ -234,9 +234,6 @@ var midCoords;
                     }
                     var countryPopulation = 'Population: XXX,XXX';
                     var countryArea = 'Area: XXX,XXX km2';
-                // ! Update once data provided    
-                    let historicalWarming = 'XXC';
-                    let futureWarming = 'XXC - XXC';
                     let countryFlag = newArray[0].properties.flag.toLowerCase();
 
                     let countryID = newArray[0].id
@@ -250,7 +247,6 @@ var midCoords;
                     //     });
                     // }
                     
-                    console.log(countryID)
 
                     map.setFeatureState({
                         source: 'initialnational',
@@ -259,11 +255,15 @@ var midCoords;
                         clicked: true
                     });
 
-                    
-
-
-                    // sourceId: String, sourceLayerId: String?, featureId: String, callback: QueryFeatureStateCallback
-
+                    var newArray = countryStats.filter(function(x) {
+                        return x.name === country
+                    });
+    
+                    var yearStart = (newArray[0]["year_start"]);
+                    var yearEnd = (newArray[0]["year_end"]);
+                    var historicalTemp = (newArray[0]["hist_temp"]);
+                    var futureLowTemp = (newArray[0]["future_temp_low"])
+                    var futureTempHigh = (newArray[0]["future_temp_high"]);
                     
                     };
                     $('#welcome-console').css('display', 'none');
@@ -272,9 +272,9 @@ var midCoords;
                     document.getElementById('country-population').innerHTML = '<p>'+countryPopulation+'</p>';
                     document.getElementById('country-size').innerHTML = '<p>'+countryArea+'</p>';
                     document.getElementById('country-flag').innerHTML = '<img class="mx-auto d-block" src="https://www.worldometers.info/img/flags/'+countryFlag+'-flag.gif"/>';
-                    document.getElementById('historical-warming').innerHTML = '<p>Warming since XXXX: <b>'+historicalWarming+'</b></p>';
-                    document.getElementById('future-warming').innerHTML = '<p>Warming since XXXX: <b>'+futureWarming+'</b></p>';
-
+                    document.getElementById('historical-warming').innerHTML = '<p>Warming since ' + yearStart + ': <b>'+historicalTemp+'</b>C' + '<br><span class="baseline"> ['+yearStart+ ' - ' +yearEnd+' baseline]</span></p>';
+                    document.getElementById('future-warming').innerHTML = '<p>' +country+ ' is projected to warm by between <b>' + futureLowTemp + 'C - '+futureTempHigh+'C</b> by 2100' + '<br><span class="baseline"> ['+yearStart+ ' - ' +yearEnd+' baseline]</span></p>';
+                    
                     csv = "./assets/data/charts/warming/country_" + country + ".csv";
 
                     updateChart1(csv);
@@ -291,8 +291,36 @@ var midCoords;
                 });
             })
         });
-    
 
+        document.getElementById('map').addEventListener("click", function () {
+            let countryName = document.getElementById('country-name').innerHTML.slice(4, -5)
+            
+            csv = "./assets/data/charts/warming/country_" + countryName + ".csv";
+        
+            updateChart1(csv);
+            updateChart2(csv);
+
+            var newArray = countryStats.filter(function(x) {
+                return x.name === countryName
+            });
+
+            console.log(newArray)
+
+            var country = (newArray[0]["name"]); 
+            console.log(country);
+            var yearStart = (newArray[0]["year_start"]);
+            var yearEnd = (newArray[0]["year_end"]);
+            var historicalTemp = (newArray[0]["hist_temp"]);
+            var futureLowTemp = (newArray[0]["future_temp_low"])
+            var futureTempHigh = (newArray[0]["future_temp_high"]);
+        
+            
+            document.getElementById('historical-warming').innerHTML = '<p>Warming since ' + yearStart + ': <b>'+historicalTemp+'</b>C' + '<br><span class="baseline"> ['+yearStart+ ' - ' +yearEnd+' baseline]</span></p>';
+            document.getElementById('future-warming').innerHTML = '<p>' +country+ ' is projected to warm by between <b>' + futureLowTemp + 'C - '+futureTempHigh+'</b>C by 2100' + '<br><span class="baseline"> ['+yearStart+ ' - ' +yearEnd+' baseline]</span></p>';
+        
+        
+        });
+    
         map.on('click', 'national-click-fills', function (e) {
 
             if (map.getLayer('national-initial-fills')) {
@@ -312,21 +340,9 @@ var midCoords;
             var promptCountry = e.features[0].properties.ADMIN;    
             var countryPopulation = 'Population: XXX,XXX';
             var countryArea = 'Area: XXX,XXX km2';
-        // ! Update once data provided    
-            let historicalWarming = 'XXC';
-            let futureWarming = 'XXC - XXC';
             let countryFlag = e.features[0].properties.flag.toLowerCase();
-            
-            // Update map console 
-
-
-            document.getElementById('top-prompt').innerHTML = '<p>How has <span class="country-bold">'+promptCountry+'</span> warmed – and may continue to warm?</p>'
             document.getElementById('country-name').innerHTML = '<h2>'+promptCountry+'</h2>';
-            document.getElementById('country-population').innerHTML = '<p>'+countryPopulation+'</p>';
-            document.getElementById('country-size').innerHTML = '<p>'+countryArea+'</p>';
             document.getElementById('country-flag').innerHTML = '<img class="mx-auto d-block" src="https://www.worldometers.info/img/flags/'+countryFlag+'-flag.gif"/>';
-            document.getElementById('historical-warming').innerHTML = '<p>Warming since XXXX: <b>'+historicalWarming+'</b></p>';
-            document.getElementById('future-warming').innerHTML = '<p>Warming since XXXX: <b>'+futureWarming+'</b></p>';
 
             let zoom = map.getZoom();
             
@@ -389,25 +405,25 @@ var midCoords;
         });
 
 
-        map.on('mousemove', 'subnational-fills', function (e) {
-            map.getCanvas().style.cursor = 'pointer';
+        // map.on('mousemove', 'subnational-fills', function (e) {
+        //     map.getCanvas().style.cursor = 'pointer';
             
-            if (e.features.length > 0) {
-                if (hoveredStateId !== null) {
-                    map.setFeatureState(
-                        { source: 'subnational', id: hoveredStateId },
-                        { hover: false }
-                    );
-                }
-                hoveredStateId = e.features[0].id;
-                map.setFeatureState(
-                    { source: 'subnational', id: hoveredStateId },
-                    { hover: true }
-                );
-            }
-            let promptCountry = e.features[0].properties.STATE_NAME;
-            document.getElementById('top-prompt').innerHTML = '<p>How has <span class="country-bold">'+promptCountry+'</span> warmed – and may continue to warm?</p>';
-        });
+        //     if (e.features.length > 0) {
+        //         if (hoveredStateId !== null) {
+        //             map.setFeatureState(
+        //                 { source: 'subnational', id: hoveredStateId },
+        //                 { hover: false }
+        //             );
+        //         }
+        //         hoveredStateId = e.features[0].id;
+        //         map.setFeatureState(
+        //             { source: 'subnational', id: hoveredStateId },
+        //             { hover: true }
+        //         );
+        //     }
+        //     let promptCountry = e.features[0].properties.STATE_NAME;
+        //     document.getElementById('top-prompt').innerHTML = '<p>How has <span class="country-bold">'+promptCountry+'</span> warmed – and may continue to warm?</p>';
+        // });
 
         // When the mouse leaves the state-fill layer, update the feature state of the
         // previously hovered feature.
@@ -455,16 +471,16 @@ var midCoords;
                 'visibility',
                 'none'
                 );
-            map.setLayoutProperty(
-                'subnational-fills',
-                'visibility',
-                'visible'
-                );
-            map.setLayoutProperty(
-                'subnational-borders',
-                'visibility',
-                'visible'
-                );
+            // map.setLayoutProperty(
+            //     'subnational-fills',
+            //     'visibility',
+            //     'visible'
+            //     );
+            // map.setLayoutProperty(
+            //     'subnational-borders',
+            //     'visibility',
+            //     'visible'
+            //     );
         } else {
             map.setLayoutProperty(
                 'national-fills',
@@ -481,16 +497,16 @@ var midCoords;
                 'visibility',
                 'visible'
                 );
-            map.setLayoutProperty(
-                'subnational-fills',
-                'visibility',
-                'none'
-                );
-            map.setLayoutProperty(
-                'subnational-borders',
-                'visibility',
-                'none'
-                );
+            // map.setLayoutProperty(
+            //     'subnational-fills',
+            //     'visibility',
+            //     'none'
+            //     );
+            // map.setLayoutProperty(
+            //     'subnational-borders',
+            //     'visibility',
+            //     'none'
+            //     );
         }
     
     });

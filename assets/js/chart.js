@@ -233,8 +233,8 @@ function updateChart1(csv) {
         // y axis should change if the max value is over 2.9 but otherwise remain fixed at 3
 
         var yMax = function () {
-            if (calcMax > 2.6) {
-                return calcMax + 0.4;
+            if (calcMax > 3) {
+                return calcMax + 0.5;
             } 
             else {
                 return 3;
@@ -259,7 +259,7 @@ function updateChart1(csv) {
             yMax()
         ]);
 
-        console.log(y.domain())
+        // console.log(y.domain())
 
         // Make the changes
        svg1.selectAll(".line")   // change the line
@@ -329,8 +329,9 @@ function updateChart1(csv) {
             "C</p>")
             // .style("left", (d3.event.pageX - 58) + "px")
             // .style("top", (d3.event.pageY - 100) + "px");
+            .style("font-size", "12px")
             .style("left", "61px")
-            .style("top", "105px");
+            .style("top", "120px");
 
             // highlight line actions
             var lines = svg1.selectAll('.line');
@@ -506,8 +507,8 @@ function updateChart2 (csv) {
         var calcMax = d3.max(scenariosFiltered, function(c) { return d3.max(c.values, function(v) { return v.anomaly; }); });
 
         var yMax = function () {
-            if (calcMax > 5.8) {
-                return calcMax + 0.2;
+            if (calcMax > 6) {
+                return calcMax + 0.5;
             } else {
                 return 6;
             }
@@ -582,8 +583,9 @@ function updateChart2 (csv) {
             "C</p>")
             // .style("left", (d3.event.pageX - 55) + "px")
             // .style("top", (d3.event.pageY - 100) + "px");
+            .style("font-size", "12px")
             .style("left", "61px")
-            .style("top", "105px");
+            .style("top", "140px");
 
             // highlight line actions
             var lines = svg2.selectAll('.line');
@@ -630,22 +632,9 @@ function updateChart2 (csv) {
 
 }
 
-// for some reason it needs to go here or it breaks??
 drawChart1();
 drawChart2();
 
-// DRAW CHART WHEN MAP CLICKED
 
 
-document.getElementById('map').addEventListener("click", function () {
-    let countryName = document.getElementById('country-name').innerHTML.slice(4, -5)
-    console.log(countryName)    
-    
-    csv = "./assets/data/charts/warming/country_" + countryName + ".csv";
 
-    updateChart1(csv);
-    updateChart2(csv);
-    // updateUncertainty(csv);
-
-
-});
