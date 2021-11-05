@@ -90,7 +90,7 @@
     { "type": "Feature", "id": 121, "properties": {  "bounds": [ 1, 38 ], "ADMIN": "Kenya", "ISO_A3": "KEN" }},
     { "type": "Feature", "id": 122, "properties": {  "bounds": [ 41, 75 ], "ADMIN": "Kyrgyzstan", "ISO_A3": "KGZ" }},
     { "type": "Feature", "id": 123, "properties": {  "bounds": [ 13, 105 ], "ADMIN": "Cambodia", "ISO_A3": "KHM" }},
-    { "type": "Feature", "id": 124, "properties": {  "bounds": [ -5, -170 ], "ADMIN": "Kiribati", "ISO_A3": "KIR" }},
+    
     { "type": "Feature", "id": 125, "properties": {  "bounds": [ 17.333333, -62.75 ], "ADMIN": "Saint Kitts and Nevis", "ISO_A3": "KNA" }},
     { "type": "Feature", "id": 126, "properties": {  "bounds": [ 37, 127.5 ], "ADMIN": "South Korea", "ISO_A3": "KOR" }},
     { "type": "Feature", "id": 128, "properties": {  "bounds": [ 29.5, 47.75 ], "ADMIN": "Kuwait", "ISO_A3": "KWT" }},
@@ -110,7 +110,7 @@
     { "type": "Feature", "id": 145, "properties": {  "bounds": [ -20, 47 ], "ADMIN": "Madagascar", "ISO_A3": "MDG" }},
     { "type": "Feature", "id": 146, "properties": {  "bounds": [ 3.2, 73 ], "ADMIN": "Maldives", "ISO_A3": "MDV" }},
     { "type": "Feature", "id": 147, "properties": {  "bounds": [ 23, -102 ], "ADMIN": "Mexico", "ISO_A3": "MEX" }},
-    { "type": "Feature", "id": 148, "properties": {  "bounds": [ 10, 167 ], "ADMIN": "Marshall Islands", "ISO_A3": "MHL" }},
+    
     { "type": "Feature", "id": 149, "properties": {  "bounds": [ 41.833333, 22 ], "ADMIN": "Macedonia", "ISO_A3": "MKD" }},
     { "type": "Feature", "id": 150, "properties": {  "bounds": [ 17, -4 ], "ADMIN": "Mali", "ISO_A3": "MLI" }},
     { "type": "Feature", "id": 151, "properties": {  "bounds": [ 35.916667, 14.433333 ], "ADMIN": "Malta", "ISO_A3": "MLT" }},
@@ -164,7 +164,7 @@
     { "type": "Feature", "id": 215, "properties": {  "bounds": [ 46.25, 15.166667 ], "ADMIN": "Slovenia", "ISO_A3": "SVN" }},
     { "type": "Feature", "id": 216, "properties": {  "bounds": [ 62, 15 ], "ADMIN": "Sweden", "ISO_A3": "SWE" }},
     { "type": "Feature", "id": 217, "properties": {  "bounds": [ -26.5, 31.5 ], "ADMIN": "Eswatini", "ISO_A3": "SWZ" }},
-    { "type": "Feature", "id": 219, "properties": {  "bounds": [ -4.583333, 55.666667 ], "ADMIN": "Seychelles", "ISO_A3": "SYC" }},
+    
     { "type": "Feature", "id": 220, "properties": {  "bounds": [ 35, 38 ], "ADMIN": "Syria", "ISO_A3": "SYR" }},
     { "type": "Feature", "id": 222, "properties": {  "bounds": [ 15, 19 ], "ADMIN": "Chad", "ISO_A3": "TCD" }},
     { "type": "Feature", "id": 223, "properties": {  "bounds": [ 8, 1.166667 ], "ADMIN": "Togo", "ISO_A3": "TGO" }},

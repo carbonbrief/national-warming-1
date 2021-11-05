@@ -836,15 +836,15 @@ var countryStats = [
    "future_temp_low": 2.18,
    "future_temp_high": 5.11
  },
- {
-   "FIELD1": 93,
-   "name": "Kiribati",
-   "year_start": 1860,
-   "year_end": 1890,
-   "hist_temp": null,
-   "future_temp_low": null,
-   "future_temp_high": null
- },
+//  {
+//    "FIELD1": 93,
+//    "name": "Kiribati",
+//    "year_start": 1860,
+//    "year_end": 1890,
+//    "hist_temp": null,
+//    "future_temp_low": null,
+//    "future_temp_high": null
+//  },
  {
    "FIELD1": 94,
    "name": "Kosovo",
@@ -998,15 +998,15 @@ var countryStats = [
    "future_temp_low": 2.17,
    "future_temp_high": 5.19
  },
- {
-   "FIELD1": 111,
-   "name": "Marshall Islands",
-   "year_start": 1860,
-   "year_end": 1890,
-   "hist_temp": null,
-   "future_temp_low": null,
-   "future_temp_high": null
- },
+//  {
+//    "FIELD1": 111,
+//    "name": "Marshall Islands",
+//    "year_start": 1860,
+//    "year_end": 1890,
+//    "hist_temp": null,
+//    "future_temp_low": null,
+//    "future_temp_high": null
+//  },
  {
    "FIELD1": 112,
    "name": "Mauritania",
@@ -1394,15 +1394,15 @@ var countryStats = [
    "future_temp_low": 2.7,
    "future_temp_high": 6.92
  },
- {
-   "FIELD1": 155,
-   "name": "Seychelles",
-   "year_start": 1860,
-   "year_end": 1890,
-   "hist_temp": null,
-   "future_temp_low": null,
-   "future_temp_high": null
- },
+//  {
+//    "FIELD1": 155,
+//    "name": "Seychelles",
+//    "year_start": 1860,
+//    "year_end": 1890,
+//    "hist_temp": null,
+//    "future_temp_low": null,
+//    "future_temp_high": null
+//  },
  {
    "FIELD1": 156,
    "name": "Sierra Leone",

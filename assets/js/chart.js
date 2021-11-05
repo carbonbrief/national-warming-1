@@ -9,6 +9,7 @@ var margin = {
     height = parseInt(d3.select("#historical-chart").style("height")) - margin.top - margin.bottom;
 
 var parseDate = d3.timeParse("%Y");
+var timeFormat = d3.timeFormat("%Y");
 
 var x = d3.scaleTime()
     .range([0, width]);
@@ -21,11 +22,12 @@ var initialCsv = "./assets/data/charts/warming/country_" + "United Kingdom" + ".
 
 // define the line
 var valueLine = d3.line()
-    // .defined(function(d) { return d.anomaly != 0; }) // remove values with exactly 0, since these are the nulls
+    //.defined(function(d) { return d.anomaly != 0; }) // remove values with exactly 0, since these are the nulls
     .defined(function(d) { return d.anomaly })
     .curve(d3.curveCardinal)
-    .x(function(d) { return x(d.year); })
+    .x(function(d) { return x(d.year);})
     .y(function(d) { return y(d.anomaly); });
+
 
 var zeroLine = d3.line()
     .y(function(d) { return y(0); })
@@ -47,7 +49,7 @@ var lineWidth = {
     "smoothed_anoms": 2.5
 }
 
-var xAxis = d3.axisBottom(x);
+var xAxis = d3.axisBottom(x).tickFormat(timeFormat);
 
 var yAxis = d3.axisLeft(y);
 
@@ -125,11 +127,7 @@ function drawChart1(){
 
         var scenariosFiltered = scenarios.filter(function(d){return filterData1[d.name]==true;});
 
-        x.domain([
-            d3.min(data, function(d) {return d.year;}),
-            // parseDate(1800),
-            parseDate(2020)
-        ]);
+        x.domain([parseDate(1800), parseDate(2020)]);
         y.domain([
             -2,
             4
@@ -165,12 +163,12 @@ function drawChart1(){
         svg1.append("g")
         .attr("class", "xaxis")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x).ticks());
+        .call(xAxis);
 
         // Add the Y Axis
         svg1.append("g")
         .attr("class", "yaxis")
-        .call(d3.axisLeft(y));
+        .call(yAxis);
 
         var multilines = svg1.selectAll(".multiline")
         .data(scenariosFiltered)
@@ -250,10 +248,7 @@ function updateChart1(csv) {
         }
 
         // Scale the range of the data again 
-        x.domain([
-            parseDate(1800),
-            parseDate(2020)
-        ]);
+        x.domain([parseDate(1800), parseDate(2020)]);
         y.domain([
             yMin(),
             yMax()
@@ -447,12 +442,12 @@ function drawChart2() {
         svg2.append("g")
         .attr("class", "xaxis")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .call(xAxis);
 
         // Add the Y Axis
         svg2.append("g")
         .attr("class", "yaxis")
-        .call(d3.axisLeft(y));
+        .call(yAxis);
 
         var multilines = svg2.selectAll(".multiline")
         .data(scenariosFiltered)

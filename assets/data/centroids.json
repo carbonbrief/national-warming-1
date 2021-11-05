@@ -125,14 +125,14 @@
   { "name": "Kenya", "lat": 1, "long": 38 },
   { "name": "Kyrgyzstan", "lat": 41, "long": 75 },
   { "name": "Cambodia", "lat": 13, "long": 105 },
-  { "name": "Kiribati", "lat": -5, "long": -170 },
+  
   { "name": "Saint Kitts and Nevis", "lat": 17.333333, "long": -62.75 },
   { "name": "Republic of Korea", "lat": 37, "long": 127.5 },
 
   { "name": "Kuwait", "lat": 29.5, "long": 47.75 },
   { "name": "Laos", "lat": 18, "long": 105 },
   { "name": "Lebanon", "lat": 33.833333, "long": 35.833333 },
-  { "name": "Liberia", "lat": 6.5, "long": 9.5 },
+  { "name": "Liberia", "lat": 8.1, "long": -11.2 },
   { "name": "Libya", "lat": 25, "long": 17 },
   { "name": "Saint Lucia", "lat": 13.883333, "long": -60.966667 },
   { "name": "Liechtenstein", "lat": 47.166667, "long": 9.533333 },
@@ -149,7 +149,7 @@
   { "name": "Madagascar", "lat": -20, "long": 47 },
   { "name": "Maldives", "lat": 3.2, "long": 73 },
   { "name": "Mexico", "lat": 23, "long": -102 },
-  { "name": "Marshall Islands", "lat": 10, "long": 167 },
+  
   { "name": "Macedonia", "lat": 41.833333, "long": 22 },
   { "name": "Mali", "lat": 17, "long": -4 },
   { "name": "Malta", "lat": 35.916667, "long": 14.433333 },
@@ -220,7 +220,7 @@
   { "name": "Sweden", "lat": 62, "long": 15 },
   { "name": "Swaziland", "lat": -26.5, "long": 31.5 },
 
-  { "name": "Seychelles", "lat": -4.583333, "long": 55.666667 },
+
   { "name": "Syrian Arab Republic", "lat": 35, "long": 38 },
   
   { "name": "Chad", "lat": 15, "long": 19 },
@@ -232,7 +232,7 @@
   { "name": "Tonga", "lat": -20, "long": -175 },
 
   { "name": "Trinidad and Tobago", "lat": 11, "long": -61 },
-  { "name": "Tunisia", "lat": 34, "long": 9 },
+  { "name": "Tunisia", "lat": 33, "long": 5 },
   { "name": "Turkey", "lat": 39.059012, "long": 34.911546 },
   { "name": "Tuvalu", "lat": -8, "long": 178 },
   

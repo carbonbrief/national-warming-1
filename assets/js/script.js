@@ -186,6 +186,7 @@ var midCoords;
         // function countryDropdown (){
 
         $('#country').on('change', function (e) {
+            
             const countrycode = $(this).val();
             country = $(this).find('option:selected').text();
             $.ajax({
@@ -232,8 +233,6 @@ var midCoords;
                             essential: true
                         });
                     }
-                    var countryPopulation = 'Population: XXX,XXX';
-                    var countryArea = 'Area: XXX,XXX km2';
                     let countryFlag = newArray[0].properties.flag.toLowerCase();
 
                     let countryID = newArray[0].id
@@ -269,8 +268,6 @@ var midCoords;
                     $('#welcome-console').css('display', 'none');
                     document.getElementById('top-prompt').innerHTML = '<p>How has <span class="country-bold">'+country+'</span> warmed – and may continue to warm?</p>'
                     document.getElementById('country-name').innerHTML = '<h2>'+country+'</h2>';
-                    document.getElementById('country-population').innerHTML = '<p>'+countryPopulation+'</p>';
-                    document.getElementById('country-size').innerHTML = '<p>'+countryArea+'</p>';
                     document.getElementById('country-flag').innerHTML = '<img class="mx-auto d-block" src="https://www.worldometers.info/img/flags/'+countryFlag+'-flag.gif"/>';
                     document.getElementById('historical-warming').innerHTML = '<p>Warming since ' + yearStart + ': <b>'+historicalTemp+'</b>C' + '<br><span class="baseline"> ['+yearStart+ ' - ' +yearEnd+' baseline]</span></p>';
                     document.getElementById('future-warming').innerHTML = '<p>' +country+ ' is projected to warm by between <b>' + futureLowTemp + 'C - '+futureTempHigh+'C</b> by 2100' + '<br><span class="baseline"> ['+yearStart+ ' - ' +yearEnd+' baseline]</span></p>';
@@ -290,6 +287,17 @@ var midCoords;
                     essential: true,
                 });
             })
+
+            var newArrayCountry = countryInfo.filter(function(x) {
+                return x.country === country
+            });
+
+            var population = (newArrayCountry[0]["population"]);
+            var density = (newArrayCountry[0]["density"]);
+            var landArea = (newArrayCountry[0]["land-area"]);
+
+            document.getElementById('country-population').innerHTML = '<p>Population: ' + population + '</p>';
+            document.getElementById('country-size').innerHTML = '<p>Area: ' +landArea+ ' km²</p>';
         });
 
         document.getElementById('map').addEventListener("click", function () {
@@ -304,8 +312,6 @@ var midCoords;
                 return x.name === countryName
             });
 
-            console.log(newArray)
-
             var country = (newArray[0]["name"]); 
             console.log(country);
             var yearStart = (newArray[0]["year_start"]);
@@ -313,11 +319,32 @@ var midCoords;
             var historicalTemp = (newArray[0]["hist_temp"]);
             var futureLowTemp = (newArray[0]["future_temp_low"])
             var futureTempHigh = (newArray[0]["future_temp_high"]);
-        
+            
+            // if (historicalTemp == null || futureLowTemp == null || futureTempHigh == null){
+            //     historicalTemp = 'N/A';
+            //     futureLowTemp == 'N/A';
+            //     futureTempHigh == 'N/A';
+
+            //     document.getElementById('historical-warming').innerHTML = '<p>Historical warming data not available</p>';
+            // document.getElementById('future-warming').innerHTML = '<p>Projected warming data not available</p>';
+            // } else {
             
             document.getElementById('historical-warming').innerHTML = '<p>Warming since ' + yearStart + ': <b>'+historicalTemp+'</b>C' + '<br><span class="baseline"> ['+yearStart+ ' - ' +yearEnd+' baseline]</span></p>';
             document.getElementById('future-warming').innerHTML = '<p>' +country+ ' is projected to warm by between <b>' + futureLowTemp + 'C - '+futureTempHigh+'</b>C by 2100' + '<br><span class="baseline"> ['+yearStart+ ' - ' +yearEnd+' baseline]</span></p>';
-        
+                
+            // }
+            
+
+            var newArrayCountry = countryInfo.filter(function(x) {
+                return x.country === country
+            });
+
+            var population = (newArrayCountry[0]["population"]);
+            var density = (newArrayCountry[0]["density"]);
+            var landArea = (newArrayCountry[0]["land-area"]);
+
+            document.getElementById('country-population').innerHTML = '<p>Population: ' + population + '</p>';
+            document.getElementById('country-size').innerHTML = '<p>Area: ' +landArea+ ' km²</p>';
         
         });
     
@@ -338,8 +365,6 @@ var midCoords;
             var lat = parseFloat(latLng[0].split("[")[1]);
             var lng = parseFloat(latLng[1]);
             var promptCountry = e.features[0].properties.ADMIN;    
-            var countryPopulation = 'Population: XXX,XXX';
-            var countryArea = 'Area: XXX,XXX km2';
             let countryFlag = e.features[0].properties.flag.toLowerCase();
             document.getElementById('country-name').innerHTML = '<h2>'+promptCountry+'</h2>';
             document.getElementById('country-flag').innerHTML = '<img class="mx-auto d-block" src="https://www.worldometers.info/img/flags/'+countryFlag+'-flag.gif"/>';
@@ -522,6 +547,7 @@ var midCoords;
     //     }
     //   })
 
+   
     
 
      map.on('click', 'national-click-fills', function (e) {
@@ -543,7 +569,3 @@ var midCoords;
             
         }
     });
-
-
-
-    

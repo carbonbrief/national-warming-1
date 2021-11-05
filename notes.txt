@@ -1,15 +1,13 @@
-saint lucia
-martinque + guadelope
-french guiana
-gambia = german flag
-kuwait flag
-ukraine location
-nepal flag
-turkey location
-tunisia location
-north cyprus - flag
-haiti flag
+flags:
+nepal - format
 
+kosovo
+antarctica
+somaliland
+
+population:
+micornesia
+nauru
 
 missing:
 palestine
@@ -17,5 +15,15 @@ western sahara
 somaliland
 hong kong
 falklands
-greenland
-saint lucia
+
+remove:
+palau
+north cyprus (replace with cyprus plus disputed border)
+
+
+no data, removed:
+kiribati
+marshall islands
+seychelles
+
+
