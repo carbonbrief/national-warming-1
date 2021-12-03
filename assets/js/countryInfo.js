@@ -12,7 +12,7 @@ var countryInfo = [
    "land-area": "2,973,190"
  },
  {
-   "country": "United States",
+   "country": "United States of America",
    "population": "331,002,651",
    "density": "36",
    "land-area": "9,147,420"

@@ -113,7 +113,7 @@ d3.queue()
           // var p = d3.geoCentroid(globeCountries[i]);
           return function(t) {
             countryAni.attr("d", path)
-                   .style("fill", function(d, j) { return j === i ? "gold" : "#c7432b"; });
+                   .style("fill", function(d, j) { return j === i ? "gold" : "#c7432b"; })
           };
         })
       .transition()

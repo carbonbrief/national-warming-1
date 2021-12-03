@@ -1,5 +1,18 @@
+/* * {
+  vertical-align: baseline;
+  font-weight: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  border: 0 none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  } */
 
 body { margin: 0; padding: 0; }
+
+html,body{overflow-x: hidden;}
 
 .row {
     /* order important so don't override new syntax with old */
@@ -25,6 +38,9 @@ body { margin: 0; padding: 0; }
   margin: auto;
   text-align: center;
   display: initial;
+  pointer-events: none;
+  -webkit-animation: 2.5s ease 0s normal forwards 1 fadein-globe;
+  animation: 2.5s ease 0s normal forwards 1 fadein-globe;
   
 }
 .globeContainer{
@@ -50,6 +66,119 @@ body { margin: 0; padding: 0; }
   stroke: #999999;
   stroke-width: 2px;
 } */
+
+#welcome-console{
+  height:100%;
+  min-height: 1080px;
+  position: absolute;
+  z-index: 3;
+  background-color: #091b2e;
+  border:1px solid #333333;
+  width:100%;
+  padding: 1.25rem;
+  color:#f4f4f4;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+  padding-top:10%;
+}
+
+#welcome-console h1{
+  font-family: 'PT Sans Narrow', sans-serif;
+  text-align: left;
+  width: 50%;
+  margin-top: 10vh;
+  margin-left: 5vw;
+  animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadein-form {
+  0% { opacity:0; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes fadein-form { /* Firefox */
+  0% { opacity:0; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes fadein-form { /* Safari and Chrome */
+  0% { opacity:0; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes fadein-form { /* Opera */
+  0% { opacity:0; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@keyframes fadein-globe {
+  0% { opacity:0; }
+  66% { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes fadein-globe { /* Firefox */
+  0% { opacity:0; }
+  66% { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes fadein-globe { /* Safari and Chrome */
+  0% { opacity:0; }
+  66% { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes fadein-globe { /* Opera */
+  0% { opacity:0; }
+  66% { opacity:0; }
+  100% { opacity:1; }
+}
+
+#globe-container{
+  text-align: right;
+  width: 40%;
+}
+
+#welcome-console > form{
+  margin-left: 5vw;
+  -webkit-animation: 1.5s ease 0s normal forwards 1 fadein-form;
+  animation: 1.5s ease 0s normal forwards 1 fadein-form;
+}
 
 /* MAP */
 
@@ -166,23 +295,6 @@ button:focus{
   #right-container{
       /* border:solid 1px green; */
       height: 802px;
-  }
-
-  #welcome-console{
-    height:100%;
-    min-height: 1080px;
-    position: absolute;
-    z-index: 3;
-    background-color: #091b2e;
-    border:1px solid #333333;
-    width:100%;
-    padding: 1.25rem;
-    color:#f4f4f4;
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top:10%;
   }
 
   /* .absolute-center {

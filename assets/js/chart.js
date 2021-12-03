@@ -224,24 +224,24 @@ function updateChart1(csv) {
         var scenariosFiltered = scenarios.filter(function(d){return filterData1[d.name]==true;});
 
         var calcMax = d3.max(scenariosFiltered, function(c) { return d3.max(c.values, function(v) { return v.anomaly; }); });
-        console.log(calcMax)
+        // console.log(calcMax)
         var calcMin = d3.min(scenariosFiltered, function(c) { return d3.min(c.values, function(v) { return v.anomaly; }); });
 
 
         // y axis should change if the max value is over 2.9 but otherwise remain fixed at 3
 
         var yMax = function () {
-            if (calcMax > 3) {
-                return calcMax + 0.5;
+            if (calcMax > 4) {
+                return calcMax + 1;
             } 
             else {
-                return 3;
+                return 4;
             }
         }
 
         var yMin = function () {
-            if (calcMin < -1.6) {
-                return calcMin - 0.4;
+            if (calcMin < -2) {
+                return calcMin - 1;
             } else {
                 return -2;
             }
@@ -502,10 +502,10 @@ function updateChart2 (csv) {
         var calcMax = d3.max(scenariosFiltered, function(c) { return d3.max(c.values, function(v) { return v.anomaly; }); });
 
         var yMax = function () {
-            if (calcMax > 6) {
-                return calcMax + 0.5;
+            if (calcMax > 7) {
+                return calcMax + 1;
             } else {
-                return 6;
+                return 7;
             }
         }
 
@@ -580,7 +580,7 @@ function updateChart2 (csv) {
             // .style("top", (d3.event.pageY - 100) + "px");
             .style("font-size", "12px")
             .style("left", "61px")
-            .style("top", "140px");
+            .style("top", "120px");
 
             // highlight line actions
             var lines = svg2.selectAll('.line');

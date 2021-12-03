@@ -33,10 +33,10 @@ var midCoords;
         //     'data': 'assets/data/excess.geojson',
         // });
 
-        // map.addSource('subnational', {
-        //     'type': 'geojson',
-        //     'data': 'https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson'
-        // });
+        map.addSource('subnational', {
+            'type': 'geojson',
+            'data': 'assets/data/subnational.geojson'
+        });
 
         // The feature-state dependent fill-opacity expression will render the hover effect
         // when a feature's hover state is set to true.
@@ -150,38 +150,38 @@ var midCoords;
         //     }
         // });
 
-        // map.addLayer({
-        //     'id': 'subnational-fills',
-        //     'type': 'fill',
-        //     'source': 'subnational',
-        //     'layout': {
-        //         // Make the layer visible by default.
-        //         'visibility': 'none'
-        //         },
-        //     'paint': {
-        //         'fill-color': '#c7432b',
-        //         'fill-opacity': [
-        //             'case',
-        //             ['boolean', ['feature-state', 'hover'], false],
-        //             0.5,
-        //             0.3
-        //         ]
-        //     }
-        // });
+        map.addLayer({
+            'id': 'subnational-fills',
+            'type': 'fill',
+            'source': 'subnational',
+            'layout': {
+                // Make the layer visible by default.
+                'visibility': 'none'
+                },
+            'paint': {
+                'fill-color': '#c7432b',
+                'fill-opacity': [
+                    'case',
+                    ['boolean', ['feature-state', 'hover'], false],
+                    0.5,
+                    0.3
+                ]
+            }
+        });
 
-        // map.addLayer({
-        //     'id': 'subnational-borders',
-        //     'type': 'line',
-        //     'source': 'subnational',
-        //     'layout': {
-        //         // Make the layer visible by default.
-        //         'visibility': 'none'
-        //         },
-        //     'paint': {
-        //         'line-color': '#f4f4f4',
-        //         'line-width': 0.3
-        //     }
-        // });
+        map.addLayer({
+            'id': 'subnational-borders',
+            'type': 'line',
+            'source': 'subnational',
+            'layout': {
+                // Make the layer visible by default.
+                'visibility': 'none'
+                },
+            'paint': {
+                'line-color': '#f4f4f4',
+                'line-width': 0.3
+            }
+        });
         
         // function countryDropdown (){
 
@@ -313,7 +313,7 @@ var midCoords;
             });
 
             var country = (newArray[0]["name"]); 
-            console.log(country);
+            // console.log(country);
             var yearStart = (newArray[0]["year_start"]);
             var yearEnd = (newArray[0]["year_end"]);
             var historicalTemp = (newArray[0]["hist_temp"]);
@@ -430,25 +430,25 @@ var midCoords;
         });
 
 
-        // map.on('mousemove', 'subnational-fills', function (e) {
-        //     map.getCanvas().style.cursor = 'pointer';
+        map.on('mousemove', 'subnational-fills', function (e) {
+            map.getCanvas().style.cursor = 'pointer';
             
-        //     if (e.features.length > 0) {
-        //         if (hoveredStateId !== null) {
-        //             map.setFeatureState(
-        //                 { source: 'subnational', id: hoveredStateId },
-        //                 { hover: false }
-        //             );
-        //         }
-        //         hoveredStateId = e.features[0].id;
-        //         map.setFeatureState(
-        //             { source: 'subnational', id: hoveredStateId },
-        //             { hover: true }
-        //         );
-        //     }
-        //     let promptCountry = e.features[0].properties.STATE_NAME;
-        //     document.getElementById('top-prompt').innerHTML = '<p>How has <span class="country-bold">'+promptCountry+'</span> warmed – and may continue to warm?</p>';
-        // });
+            if (e.features.length > 0) {
+                if (hoveredStateId !== null) {
+                    map.setFeatureState(
+                        { source: 'subnational', id: hoveredStateId },
+                        { hover: false }
+                    );
+                }
+                hoveredStateId = e.features[0].id;
+                map.setFeatureState(
+                    { source: 'subnational', id: hoveredStateId },
+                    { hover: true }
+                );
+            }
+            let promptCountry = e.features[0].properties.STATE_NAME;
+            document.getElementById('top-prompt').innerHTML = '<p>How has <span class="country-bold">'+promptCountry+'</span> warmed – and may continue to warm?</p>';
+        });
 
         // When the mouse leaves the state-fill layer, update the feature state of the
         // previously hovered feature.
@@ -496,16 +496,16 @@ var midCoords;
                 'visibility',
                 'none'
                 );
-            // map.setLayoutProperty(
-            //     'subnational-fills',
-            //     'visibility',
-            //     'visible'
-            //     );
-            // map.setLayoutProperty(
-            //     'subnational-borders',
-            //     'visibility',
-            //     'visible'
-            //     );
+            map.setLayoutProperty(
+                'subnational-fills',
+                'visibility',
+                'visible'
+                );
+            map.setLayoutProperty(
+                'subnational-borders',
+                'visibility',
+                'visible'
+                );
         } else {
             map.setLayoutProperty(
                 'national-fills',
@@ -522,16 +522,16 @@ var midCoords;
                 'visibility',
                 'visible'
                 );
-            // map.setLayoutProperty(
-            //     'subnational-fills',
-            //     'visibility',
-            //     'none'
-            //     );
-            // map.setLayoutProperty(
-            //     'subnational-borders',
-            //     'visibility',
-            //     'none'
-            //     );
+            map.setLayoutProperty(
+                'subnational-fills',
+                'visibility',
+                'none'
+                );
+            map.setLayoutProperty(
+                'subnational-borders',
+                'visibility',
+                'none'
+                );
         }
     
     });
